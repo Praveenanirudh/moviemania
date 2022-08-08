@@ -28,7 +28,13 @@ const NavBar = () => {
   const isAuthenticated = true;
   return (
     <>
-      <AppBar position="fixed" sx={{ backgroundColor: "#010048" }}>
+      <AppBar
+        position="fixed"
+        sx={{
+          background: "#0E0E0E",
+          // "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(25,2,83,1) 54%, rgba(106,0,255,1) 100%)",
+        }}
+      >
         <Toolbar className={classes.toolbar}>
           {isMobile && (
             <IconButton
