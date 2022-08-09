@@ -27,18 +27,18 @@ const redLogo =
   "https://fontmeme.com/permalink/220805/a04e43814aca497eb4f04f6b64121cf3.png";
 const blueLogo =
   "https://fontmeme.com/permalink/220805/0484e2a51aba1b94e069c26905006d6a.png";
-const Sidebar = (setmobileOpen) => {
+const Sidebar = ({ setmobileOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
-  useEffect(() => {
-    setmobileOpen(false);
-  }, [genreIdOrCategoryName]);
 
   const { genreIdOrCategoryName } = useSelector(
     (state) => state.currentGenreOrCategory
   );
+  useEffect(() => {
+    setmobileOpen(false);
+  }, [genreIdOrCategoryName]);
 
   return (
     <>
