@@ -17,7 +17,7 @@ import {
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import { Sidebar } from "../index";
+import { Sidebar, Search } from "../index";
 import useStyles from "./styles";
 const NavBar = () => {
   const [mobileOpen, setmobileOpen] = useState(false);
@@ -32,7 +32,6 @@ const NavBar = () => {
         position="fixed"
         sx={{
           background: "#0E0E0E",
-          // "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(25,2,83,1) 54%, rgba(106,0,255,1) 100%)",
         }}
       >
         <Toolbar className={classes.toolbar}>
@@ -50,7 +49,7 @@ const NavBar = () => {
           <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
             {theme.palette.mode == "dark" ? <Brightness7 /> : <DarkMode />}
           </IconButton>
-          {!isMobile && "search..."}
+          {!isMobile && <Search />}
           <div>
             {!isAuthenticated ? (
               <Button color="inherit" onClick={() => {}}>
@@ -73,7 +72,7 @@ const NavBar = () => {
               </Button>
             )}
           </div>
-          {isMobile && "search..."}
+          {isMobile && <Search />}
         </Toolbar>
       </AppBar>
       <div>
