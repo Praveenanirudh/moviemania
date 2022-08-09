@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   AppBar,
   IconButton,
@@ -22,6 +22,7 @@ import useStyles from "./styles";
 import { fetchToken, createSessionId, moviesApi } from "../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, userSelector } from "../features/auth";
+import { ColorModeContext } from "../../utils/ToggleColorMode";
 
 const NavBar = () => {
   const { isAuthenticated, user } = useSelector(userSelector);
@@ -30,7 +31,8 @@ const NavBar = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   const theme = useTheme();
   const dispatch = useDispatch();
-  console.log(user);
+
+  const colorMode = useContext(ColorModeContext);
 
   const token = localStorage.getItem("request_token");
   const sessionIdFromLocalStorage = localStorage.getItem("session_id");
@@ -61,7 +63,7 @@ const NavBar = () => {
       <AppBar
         position="fixed"
         sx={{
-          background: "#0E0E0E",
+          background: "#2C3333",
         }}
       >
         <Toolbar className={classes.toolbar}>
@@ -76,7 +78,11 @@ const NavBar = () => {
               <Menu />
             </IconButton>
           )}
-          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
+          <IconButton
+            color="inherit"
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+          >
             {theme.palette.mode == "dark" ? <Brightness7 /> : <DarkMode />}
           </IconButton>
           {!isMobile && <Search />}
@@ -97,7 +103,7 @@ const NavBar = () => {
                 <Avatar
                   style={{ width: 30, height: 30 }}
                   alt="profile"
-                  src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                  src={`https://www.themoviedb.org/t/p/w64_andh64_face${user?.avatar?.tmdb?.avatar_path}`}
                 />
               </Button>
             )}

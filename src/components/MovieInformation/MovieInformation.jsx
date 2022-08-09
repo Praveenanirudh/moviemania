@@ -195,8 +195,6 @@ const MovieInformation = () => {
                       item
                       xs={4}
                       md={2}
-                      component={Link}
-                      to={`/actor/${character.id}`}
                       style={{ textDecoration: "none" }}
                     >
                       <img
